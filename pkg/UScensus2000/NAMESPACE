@@ -1,0 +1,9 @@
+exportPattern("^[[:alpha:]]+")
+
+import(sp)
+import(maptools)
+import(UScensus2000tract,UScensus2000cdp)
+import(rgeos)
+import(utils)
+import(rjson)
+import(methods)
