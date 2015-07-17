@@ -1,0 +1,8 @@
+exportPattern("^[[:alpha:]]+")
+
+import(sp)
+import(maptools)
+import(rgeos)
+import(utils)
+import(rjson)
+import(methods)
