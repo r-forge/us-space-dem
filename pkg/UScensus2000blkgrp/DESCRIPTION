@@ -1,0 +1,19 @@
+Package: UScensus2000blkgrp
+Type: Package
+Title: US Census 2000 Block Group Shapefiles and Additional Demographic
+        Data
+Version: 1.00
+Date: 2013-12-21
+Author: Zack W. Almquist <almquist@umn.edu>
+Maintainer: Zack W. Almquist <almquist@umn.edu>
+Description: US Census 2000 Block Group shapefiles and additional
+        demographic data from the SF1 100 percent files. This data set
+        contains polygon files in lat/lon coordinates and the
+        corresponding demographic data for a number of different
+        variables.
+License: GPL (>= 2)
+Depends: R(>= 2.14), maptools, sp, foreign, methods, grDevices, base,
+        stats, utils
+LazyLoad: yes
+URL: http://disasternets.calit2.uci.edu/census2000/
+
