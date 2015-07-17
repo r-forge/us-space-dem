@@ -1,0 +1,13 @@
+Package: UScensus2010tract
+Type: Package
+Title:  US Census 2010 Tract Level Shapefiles and Additional Demographic Data
+Version: 1.00
+Date: 2011-11-06
+Author: Zack W. Almquist <almquist@umn.edu> 
+Maintainer: Zack W. Almquist <almquist@umn.edu>
+Description: US 2010 Census Tract shapefiles and additional demographic data from the SF1 100 percent files. This data set contains polygon files in lat/lon coordinates and the corresponding demographic data for a number of different variables.  
+License: GPL Version 2 or newer
+Depends: R (>= 2.10), maptools, sp, foreign, methods, grDevices, base, stats, utils
+LazyLoad: yes
+URL: http://lakshmi.calit2.uci.edu/census2000/
+Packaged: 2011-11-18 05:10:45 UTC; zack
