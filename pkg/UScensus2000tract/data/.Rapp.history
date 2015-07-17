@@ -1,0 +1,500 @@
+head(data)
+head(final)
+MC[final$MC==17.25]<-17.25-1.5
+MC<-final$MC#
+MC[final$MC==17.25]<-17.25-1.5
+hist(MC)
+summary(MC)
+MC<-final$MC+.25#
+MC[final$MC==17.25]<-17.5-1.5
+summary(MC)
+total<-rowSums(final[,4:NCOL(final)])#
+#
+head(data.frame(final$First,final$Last,total))
+27/35
+data.frame(final$First,final$Last,total)
+summary(total)
+help(cut)
+help(quantile)
+table( cut(total, breaks = quantile(total,probs=seq(0, 1, 0.25))))
+total.na<-total[!is.na(total)]#
+table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.25))))
+10.8/35
+table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.1))))
+data.frame(table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.1)))),nc=1)
+data.frame(table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.1)))))
+30/35
+33/35
+32.7/35
+data.frame(table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.05)))))
+31.3/35
+data.frame(table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.05)))))[20:1,]
+grades<-c("A+","A","A-","B+","B","B-","C+","C","C-","D+","D","D-","F")
+length(grades)
+grades<-c("A+","A","A-","A-","B+","B","B","B-","C+","C","C","C-","D")
+length(grades)
+data.frame(table( cut(total.na/35, breaks = quantile(total.na,probs=seq(0, 1, 0.05)))))[20:1,]
+data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B-","C+","C","C","C-","D")
+length(grades)
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B-","C+","C+","C","C","C-","C-","D","D")
+length(grades)
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","C+","C+","C","C","C-","C-","D","D")
+grades
+length(grades)
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","C+","C+","C+","C","C","C-","C-","D","D")
+df<-data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]#
+#
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","C+","C+","C+","C","C","C-","C-","D","D")#
+#
+df$grades<-grades
+df
+15/35
+20/35
+10/35
+sum(df$Freq)
+10/107
+df<-data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]#
+#
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","C+","C+","C+","C","C","C","C-","C-","D")#
+#
+df$grades<-grades
+df
+percent<-c(100,.95,.93,.915,.90,.88,.87,.85,.84,.83,.81,80,.785,.77,.76,.75,.74,.73,.715,.70,.675)
+length(percent)
+percent<-c(100,.95,.93,.915,.90,.88,.87,.85,.84,.83,.81,80,.785,.77,.75,.74,.73,.715,.70,.675)
+length(percent)
+df<-data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]#
+#
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","B-","C+","C+","C","C","C","C-","C-","D")#
+#
+df$grades<-grades#
+percent<-c(100,.95,.93,.915,.90,.88,.87,.85,.84,.83,.81,80,.785,.77,.75,.74,.73,.715,.70,.675)#
+df$percent<-percent
+df
+df$score<-35*percent
+df
+df<-data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]#
+#
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","B-","C+","C+","C","C","C","C-","C-","D")#
+#
+df$grades<-grades#
+percent<-c(1,.95,.93,.915,.90,.88,.87,.85,.84,.83,.81,80,.785,.77,.75,.74,.73,.715,.70,.675)#
+df$percent<-percent#
+df$score<-35*percent
+df
+df<-data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]#
+#
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","B-","C+","C+","C","C","C","C-","C-","D")#
+#
+df$grades<-grades#
+percent<-c(1,.95,.93,.915,.90,.88,.87,.85,.84,.83,.81,.80,.785,.77,.75,.74,.73,.715,.70,.675)#
+df$percent<-percent#
+df$score<-35*percent
+df
+23.625/35
+rep(df$score,each=df$Freq)
+table(rep(df$score,each=df$Freq))
+unlist(lapply(1:20,function(x){rep(df$score[x],each=df$Freq[x])}))
+summary(unlist(lapply(1:20,function(x){rep(df$score[x],each=df$Freq[x])})))
+summary(unlist(lapply(1:20,function(x){rep(df$score[x],each=df$Freq[x])})))/35
+rm(list=ls())
+final<-read.csv("~/Downloads/Final (1).csv",head=TRUE)#
+#
+MC<-final$MC+.25#
+MC[final$MC==17.25]<-17.5-1.5#
+total<-rowSums(final[,4:NCOL(final)])#
+#
+head(data.frame(final$First,final$Last,total))#
+total.na<-total[!is.na(total)]#
+table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.05))))#
+#
+data.frame(table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.05)))))#
+#
+df<-data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]
+df
+summary(total)
+25/35
+final<-read.csv("~/Downloads/Final (1).csv",head=TRUE)#
+#
+MC<-final$MC+.25#
+MC[final$MC==17.25]<-17.5-1.5#
+total<-rowSums(final[,4:NCOL(final)])#
+#
+head(data.frame(final$First,final$Last,total))#
+total.na<-total[!is.na(total)]#
+table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.05))))#
+#
+data.frame(table( cut(total.na, breaks = quantile(total.na,probs=seq(0, 1, 0.05)))))#
+#
+df<-data.frame(table( cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))))[20:1,]#
+#
+grades<-c("A+","A","A","A-","A-","B+","B+","B","B","B","B-","B-","C+","C+","C","C","C","C-","C-","D")#
+#
+df$grades<-grades#
+percent<-c(1,.95,.93,.915,.90,.88,.87,.85,.84,.83,.81,.80,.785,.77,.75,.74,.73,.715,.70,.675)#
+df$percent<-percent#
+df$score<-35*percent#
+unlist(lapply(1:20,function(x){rep(df$score[x],each=df$Freq[x])}))
+hist(unlist(lapply(1:20,function(x){rep(df$score[x],each=df$Freq[x])})))
+df
+cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05))))
+cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))
+df
+which(cuts==df$Var1[i])
+cuts<-cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))
+cuts
+which(cuts==df$Var1[i])
+i<-1
+cuts==df$Var1[i]
+which(cuts==df$Var1[i])
+df
+cuts<-cut(total.na/35, breaks = quantile(total.na/35,probs=seq(0, 1, 0.05)))#
+#
+finalGrade<-rep(0,NROW(final))#
+#
+for(i in 1:NROW(df)){#
+	finalGrade[which(cuts==df$Var1[i])]<-df$score[i]#
+}
+finalGrade
+out<-data.frame(final$First,final$Last,finalGrade)
+out
+out<-data.frame(final$First,final$Last,Unweightedtotal=total,final=finalGrade)
+out
+help(which)
+which(cuts==df$Var1[i])
+cuts
+cuts<-cut(total/35, breaks = quantile(total/35,probs=seq(0, 1, 0.05)))
+cuts
+total
+help(quantile)
+cuts<-cut(total/35, breaks = quantile(total/35,probs=seq(0, 1, 0.05),na.rm =TRUE))
+cuts
+cuts<-cut(total/35, breaks = quantile(total/35,probs=seq(0, 1, 0.05),na.rm =TRUE))#
+#
+finalGrade<-rep(0,NROW(final))#
+#
+for(i in 1:NROW(df)){#
+	finalGrade[which(cuts==df$Var1[i])]<-df$score[i]#
+}#
+out<-data.frame(final$First,final$Last,Unweightedtotal=total,final=finalGrade)
+out
+out<-data.frame(final$First,final$Last,final=finalGrade)
+out
+hist(final)
+hist(out$final)
+summary(out$final/35)
+summary(out$final[out$final!=0]/35)
+write.csv(out,"finalgrades.csv")
+31.5/35
+total
+final[103,]
+final[is.na(total),]
+dim(total)
+total
+is.na(total)
+final[which(is.na(total)),]
+final[which(out$final==0),]
+final[103,]
+final[103,4:NROW(final)]
+final[103,4:NCOL(final)]
+sum(final[103,4:NCOL(final)])
+.675*35
+out
+final[38,]
+data<-read.csv("~/Downloads/STAT3022_001F13 Grades-20131224_0551-comma_separated.csv",header=TRUE)
+names(data)
+hist(data$Course.total)
+summary(data$Course.total)
+cut(data$Course.total, breaks = quantile(data$Course.total,probs=seq(0, 1, 0.2),na.rm =TRUE))
+tables(cut(data$Course.total, breaks = quantile(data$Course.total,probs=seq(0, 1, 0.2),na.rm =TRUE)))
+table(cut(data$Course.total, breaks = quantile(data$Course.total,probs=seq(0, 1, 0.2),na.rm =TRUE)))
+table(cut(data$Course.total, breaks = quantile(data$Course.total,probs=seq(0, 1, 0.1),na.rm =TRUE)))
+setwd("~/Documents/UScensus2000/UScensus2000cdp/data")
+data<-dir()
+data
+nam<-strsplit(data)
+nam<-strsplit(data,".rda")
+nam
+unlist(nam)
+nam<-data<-dir()#
+nam<-unlist(strsplit(data,".rda"))
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))
+nam
+i<-1
+load(data[i])
+ls()
+temp<-get(nam[i])
+temp@data
+head(temp@data)
+head(temp@data[,1:5])
+class(temp$pop2000)
+class(temp$state)
+help(assign)
+help(save)
+rm(list=ls())
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))#
+#
+for(i in 1:length(data)){#
+	load(data[i])#
+	temp<-get(nam[i])#
+	temp$place<-as.character(temp$place)#
+	temp$state<-as.character(temp$state)#
+	temp$name<-as.character(temp$name)#
+	temp$designation<-as.character(temp$designation)#
+	assign(nam[i],temp)#
+	save(nam[i],file=data[i],compress="xz")#
+	print(i)#
+}
+nam
+nam[i]
+quote(nam[i])
+nam[i]
+eval(nam[i])
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))#
+#
+for(i in 1:length(data)){#
+	load(data[i])#
+	temp<-get(nam[i])#
+	temp$place<-as.character(temp$place)#
+	temp$state<-as.character(temp$state)#
+	temp$name<-as.character(temp$name)#
+	temp$designation<-as.character(temp$designation)#
+	assign(nam[i],temp)#
+	save(eval(nam[i]),file=data[i],compress="xz")#
+	print(i)#
+}
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))#
+#
+for(i in 1:length(data)){#
+	load(data[i])#
+	temp<-get(nam[i])#
+	temp$place<-as.character(temp$place)#
+	temp$state<-as.character(temp$state)#
+	temp$name<-as.character(temp$name)#
+	temp$designation<-as.character(temp$designation)#
+	assign(nam[i],temp)#
+	save(list=nam[i],file=data[i],compress="xz")#
+	print(i)#
+}
+ls()
+rm(list=ls())
+load(data[1])
+data<-dir()
+load(data[1])
+ls()
+plot(alabama.cdp)
+class(alabama.cdp$state)
+rm(list=ls())
+setwd("~/Documents/UScensus2000/UScensus2000tract/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))
+data
+head(alabama.tract.rda@data[,1:5])
+head(alabama.tract@data[,1:5])
+load(nam[i])
+load(nam[1])
+load(list=nam[1])
+nam[1]
+dir()
+load(data[i])
+load(data[1])
+head(alabama.tract.rda@data[,1:5])
+head(alabama.tract@data[,1:5])
+temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract
+i<-1
+temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract
+table(nchar(tract))
+temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract#
+	tract[nchar(tract)==4]<-paste(tract[nchar(tract)==4],"00",sep="")#
+	fips<-paste(temp$state,temp$county,tract,sep="")#
+	temp$tract<-tract#
+	temp$fips<-fips
+head(temp@data[,1:5])
+help(data.frame)
+test<-data.frame(fips=fips,temp@data,stringsAsFactors =FALSE)
+head(test[,1:5])
+temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract#
+	tract[nchar(tract)==4]<-paste(tract[nchar(tract)==4],"00",sep="")#
+	fips<-paste(temp$state,temp$county,tract,sep="")#
+	temp$tract<-tract#
+	temp@data<-data.frame(fips=fips,temp@data,stringsAsFactors =FALSE)
+head(temp@data[,1:5])
+temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract
+head(temp$tract)
+rm(list=ls())
+setwd("~/Documents/UScensus2000/UScensus2000tract/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))
+i<-1
+load(data[i])#
+	temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract#
+	tract[nchar(tract)==4]<-paste(tract[nchar(tract)==4],"00",sep="")#
+	fips<-paste(temp$state,temp$county,tract,sep="")#
+	temp$tract<-tract#
+	temp@data<-data.frame(fips=fips,temp@data,stringsAsFactors =FALSE)
+assign(nam[i],temp)
+nam[i]
+class(alabama.tract$fips)
+rm(list=ls())
+setwd("~/Documents/UScensus2000/UScensus2000tract/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))#
+#
+for(i in 1:length(data)){#
+	load(data[i])#
+	temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract#
+	tract[nchar(tract)==4]<-paste(tract[nchar(tract)==4],"00",sep="")#
+	fips<-paste(temp$state,temp$county,tract,sep="")#
+	temp$tract<-tract#
+	temp@data<-data.frame(fips=fips,temp@data,stringsAsFactors =FALSE)#
+	assign(nam[i],temp)#
+	save(list=nam[i],file=data[i],compress="xz")#
+	print(i)#
+}
+ls()
+head(west_virginia.tract@data[,1:5])
+ls()
+rm(list=ls())
+setwd("~/Documents/UScensus2000/UScensus2000blkgrp/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))
+i<-1
+load(data[i])#
+	temp<-get(nam[i])
+head(temp@data[,1:5])
+table(nchar(temp$blkgrp))
+table(nchar(as.character(temp$blkgrp)))
+i<-1
+load(data[i])#
+	temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	temp$blkgrp<-as.character(temp$blkgrp)#
+	tract<-temp$tract#
+	tract[nchar(tract)==4]<-paste(tract[nchar(tract)==4],"00",sep="")#
+	fips<-paste(temp$state,temp$county,tract,temp$blkgrp,sep="")#
+	temp$tract<-tract#
+	temp@data<-data.frame(fips=fips,temp@data,stringsAsFactors =FALSE)#
+	assign(nam[i],temp)
+ls()
+head(alabama.blkgrp@data[,1:5])
+class(alabama.blkgrp$state)
+class(alabama.blkgrp$fips)
+rm(list=ls())
+setwd("~/Documents/UScensus2000/UScensus2000blkgrp/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))#
+#
+for(i in 1:length(data)){#
+	load(data[i])#
+	temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	temp$blkgrp<-as.character(temp$blkgrp)#
+	tract<-temp$tract#
+	tract[nchar(tract)==4]<-paste(tract[nchar(tract)==4],"00",sep="")#
+	fips<-paste(temp$state,temp$county,tract,temp$blkgrp,sep="")#
+	temp$tract<-tract#
+	temp@data<-data.frame(fips=fips,temp@data,stringsAsFactors =FALSE)#
+	assign(nam[i],temp)#
+	save(list=nam[i],file=data[i],compress="xz")#
+	print(i)#
+}
+setwd("~/Documents/UScensus2000/UScensus2000tract/data")
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))
+i<-1
+load(data[i])#
+	temp<-get(nam[i])
+ls()
+rm(list=ls())
+setwd("~/Documents/UScensus2000/UScensus2000tract/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))
+i<-1
+load(data[i])#
+	temp<-get(nam[i])
+plot(temp)
+ls()
+head(alabama.tract@data[,1:5])
+load("oregon.tract.rda")
+ls()
+plot(oregon.tract)
+setwd("~/Documents/UScensus2000/UScensus2000tract/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))#
+#
+for(i in 1:length(data)){#
+	load(data[i])#
+	save(list=nam[i],file=data[i],compress="xz")#
+	print(i)#
+}
+help(save)
+help(save)
+rm(list=ls())
+setwd("~/Documents/UScensus2000/UScensus2000tract/data")#
+#
+data<-dir()#
+nam<-unlist(strsplit(data,".rda"))#
+#
+for(i in 1:length(data)){#
+	load(data[i])#
+	temp<-get(nam[i])#
+	temp$state<-as.character(temp$state)#
+	temp$county<-as.character(temp$county)#
+	temp$tract<-as.character(temp$tract)#
+	tract<-temp$tract#
+	tract[nchar(tract)==4]<-paste(tract[nchar(tract)==4],"00",sep="")#
+	fips<-paste(temp$state,temp$county,tract,sep="")#
+	temp$tract<-tract#
+	temp@data<-data.frame(fips=fips,temp@data,stringsAsFactors =FALSE)#
+	assign(nam[i],temp)#
+	save(list=nam[i],file=data[i],compress="xz")#
+	print(i)#
+}
+ls()
+data[i]
+nam[i]
+head(wyoming.tract@data[,1:5])
