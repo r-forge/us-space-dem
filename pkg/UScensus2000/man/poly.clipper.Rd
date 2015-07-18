@@ -90,8 +90,11 @@ return(out)
 colors.use<-color.map(portland,portland$pop2000)
 plot(portland,col=colors.use$colors)
 #text(coordinates(alabama.blk),alabama.blk@data$name,cex=.3)
-title(main="Census Tracts of\n Portland Oregon, 2000", sub="Quantiles (equal frequency)")
-legend("bottomright",legend=colors.use$dem.cut,fill=colors.use$table.colors,bty="o",title="Population Count",bg="white")
+title(main="Census Tracts of\n Portland Oregon, 2000", 
+sub="Quantiles (equal frequency)")
+legend("bottomright",legend=colors.use$dem.cut,
+fill=colors.use$table.colors,bty="o",
+title="Population Count",bg="white")
 
 }
 
