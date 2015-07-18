@@ -25,7 +25,7 @@ col<-colors.use$color
 
 args <- list(x=sp,...,col=colors.use$color)
 do.call("plot", args)
-title(main=main,sub=sub)
+graphics::title(main=main,sub=sub)
 legend(legend$pos,legend=colors.use$dem.cut,fill=colors.use$table.colors,bty="o",title=legend$title,bg="white")
 }
 

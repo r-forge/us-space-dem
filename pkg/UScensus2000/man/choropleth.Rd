@@ -8,13 +8,21 @@ Choropleth Mapping
 A function geared to making choropleth maps easier to construct for the US Census Data.
 }
 \usage{
-choropleth(sp, dem = "pop2000", cuts = list("quantile", seq(0, 1, 0.25)), 
+choropleth(sp, dem = "pop2000", 
 
-color = list(fun = "hsv", attr = list(h = c(0.4, 0.5, 0.6, 0.7), s = 0.6, v = 0.6, alpha = 1)), main = NULL, 
+cuts = list("quantile", seq(0, 1, 0.25)), 
+
+color = list(fun = "hsv", 
+
+attr = list(h = c(0.4, 0.5, 0.6, 0.7), 
+
+s = 0.6, v = 0.6, alpha = 1)), main = NULL, 
 
 sub = "Quantiles (equal frequency)", border = "transparent", 
 
-legend = list(pos = "bottomleft", title = "Population Count"), type = "plot", ...)
+legend = list(pos = "bottomleft", 
+
+title = "Population Count"), type = "plot", ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -61,12 +69,18 @@ Zack W Almquist
 data(oregon.tract)
 
 ###Using plot
-choropleth(oregon.tract,"pop2000",color = list(fun = "rainbow", attr = list(4)),main="2000 US Census Tracts \n Oregon Tracts",type="plot",border="transparent")
+choropleth(oregon.tract,"pop2000",
+color = list(fun = "rainbow",
+ attr = list(4)),
+ main="2000 US Census Tracts \n Oregon Tracts",
+ type="plot",border="transparent")
 
 
 
 ###Using spplot
-choropleth(oregon.tract,"pop2000",main="2000 US Census Tracts \n Oregon Tracts",border="transparent",type="spplot")
+choropleth(oregon.tract,"pop2000",
+main="2000 US Census Tracts \n Oregon Tracts",
+border="transparent",type="spplot")
 
 
 }
