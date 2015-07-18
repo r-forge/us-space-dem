@@ -127,6 +127,7 @@ Bureau, 2001.
 \url{http://www.census.gov/prod/cen2000/doc/sf1.pdf} \cr
 }
 \examples{
+\dontrun{
 data(district_of_columbia.tract)
 
 ############################################
@@ -161,13 +162,13 @@ colors.use<-color.map(district_of_columbia.tract,
 district_of_columbia.tract$pop2000)
 plot(district_of_columbia.tract,col=colors.use$colors)
 #text(coordinates(district_of_columbia.tract),
-district_of_columbia.tract@data$name,cex=.3)
+#district_of_columbia.tract@data$name,cex=.3)
 title(main="Census Tracts \n of District_of_columbia, 2000", 
 sub="Quantiles (equal frequency)")
 legend("bottomright",legend=colors.use$dem.cut,
 fill=colors.use$table.colors,bty="o",title="Population Count",
 bg="white")
-
+}
 
 
 ###############################
