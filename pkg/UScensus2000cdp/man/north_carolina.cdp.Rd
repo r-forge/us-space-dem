@@ -124,7 +124,7 @@ Bureau, 2001.
 }
 \references{
 \url{http://www.census.gov/ }\cr
-\url{http://www2.census.gov/cgi-bin/shapefiles/national-files} \cr
+\url{https://www.census.gov/geo/maps-data/data/tiger-line.html} \cr
 \url{http://www.census.gov/prod/cen2000/doc/sf1.pdf} \cr
 }
 \examples{
@@ -158,8 +158,11 @@ return(out)
 colors.use<-color.map(north_carolina.cdp,north_carolina.cdp$pop2000)
 plot(north_carolina.cdp,col=colors.use$colors)
 #text(coordinates(north_carolina.cdp),north_carolina.cdp$name,cex=.3)
-title(main="Census Designated Places \n of North_carolina, 2000", sub="Quantiles (equal frequency)")
-legend("bottomright",legend=colors.use$dem.cut,fill=colors.use$table.colors,bty="o",title="Population Count",bg="white")
+title(main="Census Designated Places \n of North_carolina, 2000", 
+sub="Quantiles (equal frequency)")
+legend("bottomright",legend=colors.use$dem.cut,
+fill=colors.use$table.colors,bty="o",title="Population Count",
+bg="white")
 
 
 
@@ -182,13 +185,17 @@ plotvar <- north_carolina.cdp$pop2000
 	plotclr <- brewer.pal(nclr,"BuPu")
 	class <- classIntervals(plotvar, nclr, style="quantile")
 	colcode <- findColours(class, plotclr)
-	plot(north_carolina.cdp, col=colcode, border="transparent",add=TRUE)
+	plot(north_carolina.cdp, col=colcode, 
+	border="transparent",add=TRUE)
 	#transparent
-title(main="Census Designated Places\n of North_carolina, 2000", sub="Quantiles (equal frequency)")
+title(main="Census Designated Places\n of North_carolina, 2000", 
+sub="Quantiles (equal frequency)")
 map.text("county", "north_carolina",cex=.7,add=TRUE)
 map('county','north_carolina',add=TRUE)
-legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),fill=attr(colcode, "palette"), 
-cex=0.9, bty="o", title="Population Count",bg="white")
+legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),
+fill=attr(colcode, "palette"), 
+cex=0.9, bty="o", title="Population Count",
+bg="white")
 }
 }
 \keyword{datasets}
