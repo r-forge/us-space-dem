@@ -123,7 +123,7 @@ Bureau, 2001.
 }
 \references{
 \url{http://www.census.gov/ }\cr
-\url{http://www2.census.gov/cgi-bin/shapefiles/national-files} \cr
+\url{https://www.census.gov/geo/maps-data/data/tiger-line.html} \cr
 \url{http://www.census.gov/prod/cen2000/doc/sf1.pdf} \cr
 }
 \examples{
@@ -160,8 +160,10 @@ return(out)
 colors.use<-color.map(hawaii.tract,hawaii.tract$pop2000)
 plot(hawaii.tract,col=colors.use$colors)
 #text(coordinates(hawaii.tract),hawaii.tract$name,cex=.3)
-title(main="Census Tracts \n of Hawaii, 2000", sub="Quantiles (equal frequency)")
-legend("bottomright",legend=colors.use$dem.cut,fill=colors.use$table.colors,bty="o",title="Population Count",bg="white")
+title(main="Census Tracts \n of Hawaii, 2000", 
+sub="Quantiles (equal frequency)")
+legend("bottomright",legend=colors.use$dem.cut,
+fill=colors.use$table.colors,bty="o",title="Population Count",bg="white")
 
 
 
@@ -185,8 +187,10 @@ plotvar <- as.numeric(hawaii.tract@data$pop2000)
 	colcode <- findColours(class, plotclr)
 	plot(hawaii.tract, col=colcode, border="transparent")
 	#transparent
-title(main="Census Tracts \n of Hawaii, 2000", sub="Quantiles (equal frequency)")
-legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),fill=attr(colcode, "palette"), 
+title(main="Census Tracts \n of Hawaii, 2000", 
+sub="Quantiles (equal frequency)")
+legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),
+fill=attr(colcode, "palette"), 
 cex=0.9, bty="o", title="Population Count",bg="white")
 }
 }

@@ -123,7 +123,7 @@ Bureau, 2001.
 }
 \references{
 \url{http://www.census.gov/ }\cr
-\url{http://www2.census.gov/cgi-bin/shapefiles/national-files} \cr
+\url{https://www.census.gov/geo/maps-data/data/tiger-line.html} \cr
 \url{http://www.census.gov/prod/cen2000/doc/sf1.pdf} \cr
 }
 \examples{
@@ -160,8 +160,10 @@ return(out)
 colors.use<-color.map(new_hampshire.tract,new_hampshire.tract$pop2000)
 plot(new_hampshire.tract,col=colors.use$colors)
 #text(coordinates(new_hampshire.tract),new_hampshire.tract@data$name,cex=.3)
-title(main="Census Tracts \n of New_hampshire, 2000", sub="Quantiles (equal frequency)")
-legend("bottomright",legend=colors.use$dem.cut,fill=colors.use$table.colors,bty="o",title="Population Count",bg="white")
+title(main="Census Tracts \n of New_hampshire, 2000", 
+sub="Quantiles (equal frequency)")
+legend("bottomright",legend=colors.use$dem.cut,
+fill=colors.use$table.colors,bty="o",title="Population Count",bg="white")
 
 
 
@@ -184,12 +186,15 @@ plotvar <- new_hampshire.tract$pop2000
 	plotclr <- brewer.pal(nclr,"BuPu")
 	class <- classIntervals(plotvar, nclr, style="quantile")
 	colcode <- findColours(class, plotclr)
-	plot(new_hampshire.tract, col=colcode, border="transparent",add=TRUE)
+	plot(new_hampshire.tract, col=colcode, 
+	border="transparent",add=TRUE)
 	#transparent
-title(main="Census Tracts \n of New_hampshire, 2000", sub="Quantiles (equal frequency)")
+title(main="Census Tracts \n of New_hampshire, 2000", 
+sub="Quantiles (equal frequency)")
 map.text("county", "new_hampshire",cex=.7,add=TRUE)
 map('county','new_hampshire',add=TRUE)
-legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),fill=attr(colcode, "palette"), 
+legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),
+fill=attr(colcode, "palette"), 
 cex=0.9, bty="o", title="Population Count",bg="white")
 }
 }

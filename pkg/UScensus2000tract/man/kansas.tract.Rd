@@ -123,7 +123,7 @@ Bureau, 2001.
 }
 \references{
 \url{http://www.census.gov/ }\cr
-\url{http://www2.census.gov/cgi-bin/shapefiles/national-files} \cr
+\url{https://www.census.gov/geo/maps-data/data/tiger-line.html} \cr
 \url{http://www.census.gov/prod/cen2000/doc/sf1.pdf} \cr
 }
 \examples{
@@ -150,7 +150,8 @@ colors.dem<-vector(length=l.poly)
 for(i in 1:l.uc){
 	colors.dem[which(dem.num==dem.col[i,2])]<-dem.col[i,1]
 	}
-out<-list(colors=colors.dem,dem.cut=dem.col[,2],table.colors=dem.col[,1])
+out<-list(colors=colors.dem,dem.cut=dem.col[,2],
+table.colors=dem.col[,1])
 return(out)
 }
 ############################################
@@ -160,8 +161,11 @@ return(out)
 colors.use<-color.map(kansas.tract,kansas.tract$pop2000)
 plot(kansas.tract,col=colors.use$colors)
 #text(coordinates(kansas.tract),kansas.tract@data$name,cex=.3)
-title(main="Census Tracts \n of Kansas, 2000", sub="Quantiles (equal frequency)")
-legend("bottomright",legend=colors.use$dem.cut,fill=colors.use$table.colors,bty="o",title="Population Count",bg="white")
+title(main="Census Tracts \n of Kansas, 2000", 
+sub="Quantiles (equal frequency)")
+legend("bottomright",legend=colors.use$dem.cut,
+fill=colors.use$table.colors,bty="o",title="Population Count",
+bg="white")
 
 
 
@@ -184,12 +188,15 @@ plotvar <- kansas.tract$pop2000
 	plotclr <- brewer.pal(nclr,"BuPu")
 	class <- classIntervals(plotvar, nclr, style="quantile")
 	colcode <- findColours(class, plotclr)
-	plot(kansas.tract, col=colcode, border="transparent",add=TRUE)
+	plot(kansas.tract, col=colcode, 
+	border="transparent",add=TRUE)
 	#transparent
-title(main="Census Tracts \n of Kansas, 2000", sub="Quantiles (equal frequency)")
+title(main="Census Tracts \n of Kansas, 2000", 
+sub="Quantiles (equal frequency)")
 map.text("county", "kansas",cex=.7,add=TRUE)
 map('county','kansas',add=TRUE)
-legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),fill=attr(colcode, "palette"), 
+legend("bottomright","(x,y)", legend=names(attr(colcode, "table")),
+fill=attr(colcode, "palette"), 
 cex=0.9, bty="o", title="Population Count",bg="white")
 }
 }
