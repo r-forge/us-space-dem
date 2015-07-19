@@ -160,7 +160,7 @@ return(out)
 colors.use<-color.map(massachusetts.tract,massachusetts.tract$pop2000)
 plot(massachusetts.tract,col=colors.use$colors)
 #text(coordinates(massachusetts.tract),
-massachusetts.tract@data$name,cex=.3)
+#massachusetts.tract@data$name,cex=.3)
 title(main="Census Tracts \n of Massachusetts, 2000", 
 sub="Quantiles (equal frequency)")
 legend("bottomright",legend=colors.use$dem.cut,
