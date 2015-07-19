@@ -160,7 +160,7 @@ return(out)
 colors.use<-color.map(rhode_island.tract,rhode_island.tract$pop2000)
 plot(rhode_island.tract,col=colors.use$colors)
 #text(coordinates(rhode_island.tract),
-rhode_island.tract@data$name,cex=.3)
+#rhode_island.tract@data$name,cex=.3)
 title(main="Census Tracts \n of Rhode_island, 2000", 
 sub="Quantiles (equal frequency)")
 legend("bottomright",legend=colors.use$dem.cut,
