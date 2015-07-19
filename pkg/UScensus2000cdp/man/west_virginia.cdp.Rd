@@ -158,7 +158,7 @@ return(out)
 colors.use<-color.map(west_virginia.cdp,west_virginia.cdp$pop2000)
 plot(west_virginia.cdp,col=colors.use$colors)
 #text(coordinates(west_virginia.cdp),
-west_virginia.cdp$name,cex=.3)
+#west_virginia.cdp$name,cex=.3)
 title(main="Census Designated Places \n of West_virginia, 2000", 
 sub="Quantiles (equal frequency)")
 legend("bottomright",legend=colors.use$dem.cut,
