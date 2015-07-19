@@ -160,7 +160,7 @@ return(out)
 colors.use<-color.map(pennsylvania.tract,pennsylvania.tract$pop2000)
 plot(pennsylvania.tract,col=colors.use$colors)
 #text(coordinates(pennsylvania.tract),
-pennsylvania.tract@data$name,cex=.3)
+#pennsylvania.tract@data$name,cex=.3)
 title(main="Census Tracts \n of Pennsylvania, 2000",
  sub="Quantiles (equal frequency)")
 legend("bottomright",legend=colors.use$dem.cut,

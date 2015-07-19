@@ -123,7 +123,7 @@ Bureau, 2001.
 }
 \references{
 \url{http://www.census.gov/ }\cr
-\url{https://www.census.gov/geo/maps-data/data/tiger-line.htmls} \cr
+\url{https://www.census.gov/geo/maps-data/data/tiger-line.html} \cr
 \url{http://www.census.gov/prod/cen2000/doc/sf1.pdf} \cr
 }
 \examples{
