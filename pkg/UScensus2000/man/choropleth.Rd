@@ -66,6 +66,7 @@ Zack W Almquist
 \code{\link{spplot}}, \code{\link{plot}}
 }
 \examples{
+library(UScensus2000tract)
 data(oregon.tract)
 
 ###Using plot

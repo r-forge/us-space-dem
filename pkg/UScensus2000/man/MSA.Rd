@@ -54,6 +54,7 @@ Bureau, 2001. \cr
 }
 \examples{
 ## Load the data files for MSA names and MSA FIPS codes
+require(UScensus2000tract)
 data(MSAnames)
 data(MSAfips)
 

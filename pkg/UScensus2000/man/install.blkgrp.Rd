@@ -29,7 +29,7 @@ This is an extremely large file (around 2 gigs) and should only be installed if 
 
 \examples{
 \dontrun{
-install.blkgrp("osx")
+install.blkgrp()
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

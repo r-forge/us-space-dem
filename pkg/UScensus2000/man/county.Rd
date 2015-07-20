@@ -54,6 +54,7 @@ Bureau, 2001. \cr
 %%\seealso{}
 \examples{
 #### look at the counties of Oregon
+library(UScensus2000tract)
 data(countyfips)
 countyfips[countyfips$statename=="oregon",]
 

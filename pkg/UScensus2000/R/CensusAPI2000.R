@@ -60,7 +60,7 @@ CensusAPI2000.sub<-function(variables,state.fips,level=c("county","tract","block
 	else if(level=="cdp")
 		url<-paste("http://api.census.gov/data/2000/",summaryfile,"?get=",gsub(", ",",",toString(variables)),"&for=place:*&in=state:",state.fips,"&key=",key,sep="")
 		
-	document <- fromJSON(file=url)
+	document <- rjson::fromJSON(file=url)
 	m<-matrix(unlist(document),ncol=length(document[[1]]),byrow=TRUE)
 	m<-cbind(rep(NA,NROW(m)),m)
 	colnames(m)[2:NCOL(m)]<-c(m[1,2:NCOL(m)])
