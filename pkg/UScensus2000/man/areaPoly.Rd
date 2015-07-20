@@ -69,7 +69,7 @@ return(out)
 ############################################
 ## Helper function for handling coloring of the map
 ############################################
-
+library(UScensus2000tract)
 data(oregon.tract)
 
 
@@ -83,7 +83,9 @@ oregon.tract$den00<-den00
 colors.use<-color.map(oregon.tract,oregon.tract$den00)
 plot(oregon.tract,col=colors.use$colors,border="transparent")
 title(main="Census Tracts \n of Oregon, 2000", sub="Quantiles (equal frequency)")
-legend("bottomright",legend=colors.use$dem.cut,fill=colors.use$table.colors,bty="o",title="Population Density",bg="white")
+legend("bottomright",legend=colors.use$dem.cut,
+fill=colors.use$table.colors,bty="o",
+title="Population Density",bg="white")
 
 
 }

@@ -32,12 +32,13 @@ Zack W. Almquist \email{almquist@uci.edu}
 }
 
 \examples{
-
+\dontrun{
 ## SF MSA FIPS Code
 nameTofips("san francisco","ca","msa")
 
 ## Orange County FIPS
 nameTofips("orange","ca","county")
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

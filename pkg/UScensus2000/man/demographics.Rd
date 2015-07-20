@@ -49,7 +49,8 @@ Bureau, 2001. \cr
 \code{\link{county}}, \code{\link{MSA}}, \code{\link{city}}
 }
 \examples{
-
+library(UScensus2000tract)
+library(UScensus2000cdp)
 ##MSA example
 bayarea<-demographics(dem=c("pop2000","white","black"),"CA",level="msa",msaname="San Francisco")
 

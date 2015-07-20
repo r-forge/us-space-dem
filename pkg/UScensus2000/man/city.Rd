@@ -46,6 +46,7 @@ Zack W. Almquist \email{almquist@uci.edu}
 
 %%\seealso{}
 \examples{
+library(UScensus2000cdp)
 ##Load oregon.cdp data 
 data(oregon.cdp)
 
