@@ -10,8 +10,8 @@ Description: US Census 2010 shape files and additional demographic data
         of helper functions for the UScensus2010blk,
         UScensus2010blkgrp, UScensus2010tract, UScensus2010cdp
         packages.
-License: GPL (>= 2)
-Depends: R (>= 3.2), maptools,sp,foreign,methods,grDevices,base,
+License: GPL (>=2)
+Depends: R (>= 3.2.2), maptools,sp,foreign,methods,grDevices,base,
         stats,utils,rjson,rgeos
 Suggests: rgdal
 LazyLoad: yes
