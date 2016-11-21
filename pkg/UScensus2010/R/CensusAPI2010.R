@@ -195,7 +195,10 @@ wrapperCD2010<-function(variables,state.fips,level=c("county","tract","block gro
 		}
 		for(k in 2:(NCOL(fout))){fout[,k]<-as.numeric(fout[,k])}
 		return(fout)
-	}
-	
+	}	
 CensusData2010.sub(variables=variables,state.fips=state.fips,level=level,key=key,summaryfile=summaryfile)
+}
+
+### Final vector call
+wrapperCD2010(variables=variables,state.fips=state.fips,level=level,key=key,summaryfile=summaryfile)
 }
