@@ -9,12 +9,12 @@ CensusData2010.sub<-function(variables,state.fips,level=c("county","tract","bloc
 	temp
 	}
 	fips2010<-bf()
-		
+
 	if(level!="congressional_district"){
 	}
 	if(level=="block"&&summaryfile=="ACS")
 		stop("ACS data not available at block level.  ACS data is available at the county, tract, and block group levels.")
-	#suppressMessages(require(rjson))
+	suppressMessages(require(rjson))
 	level<-match.arg(level,several.ok=FALSE)
 	summaryfile<-match.arg(summaryfile,several.ok=FALSE)
 	if(level!="congressional_district"){
@@ -88,7 +88,21 @@ CensusData2010.sub<-function(variables,state.fips,level=c("county","tract","bloc
 	m<-as.data.frame(m, stringsAsFactors=F)
 	m=sapply(m, function(x) ifelse(x == "NULL", NA, x))
 	colnames(m)<-m[1,]
+	    
 	m<-as.data.frame(m[-1,], stringsAsFactors=F)
+	#it turns out DC was breaking this, so this is a fix.
+	if(state.fips=='11' & NROW(m) == (length(variables)+2) & NCOL(m) ==1)
+	{
+	  m=t(m)
+	  m=as.data.frame(m, stringsAsFactors=F)
+	  rownames(m)<-NULL
+	}
+	if(NCOL(m)==1)
+	{
+	  m=t(m)
+	  m=as.data.frame(m, stringsAsFactors=F)
+	  rownames(m)<-NULL	
+	}
 	return(m)
 	}
 	
@@ -119,7 +133,9 @@ CensusData2010.sub<-function(variables,state.fips,level=c("county","tract","bloc
 			for(j in 1:length(fips.subset))
 			{
 			m<-APIcall(fipscode=fips.subset[j])
-			d[substr(d$fips,3,5)==fips.subset[j],2:(length(variables)+1)]<-m[match(paste(m$state,m$county,m$tract,m[,"block group"],sep=""),rownames(d[substr(d$fips,3,5)==fips.subset[j],])),1:length(variables)]
+			m2 = match(rownames(d), paste(m$state,m$county,m$tract,m[,"block group"],sep=""))
+			m2 = m2[!is.na(m2)]
+			d[substr(d$fips,3,5)==fips.subset[j],2:(length(variables)+1)]<-m[m2,1:length(variables)]
 			}
 		}
 		
@@ -128,7 +144,9 @@ CensusData2010.sub<-function(variables,state.fips,level=c("county","tract","bloc
 		for(j in 1:length(fips.subset))
 		{
 			m<-APIcall(fipscode=fips.subset[j])
-			d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)]<-m[match(paste(m$state,m$county,m$tract,m$block,sep=""),rownames(d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)])),1:length(variables)]
+			m2 = match(rownames(d),paste(m$state,m$county,m$tract,m$block,sep="") )
+			m2 = m2[!is.na(m2)]
+			d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)]<-m[m2, 1:length(variables)]
 		}
 	}
 	
@@ -180,8 +198,4 @@ wrapperCD2010<-function(variables,state.fips,level=c("county","tract","block gro
 	}
 	
 CensusData2010.sub(variables=variables,state.fips=state.fips,level=level,key=key,summaryfile=summaryfile)
-}
-
-### Final vector call
-wrapperCD2010(variables=variables,state.fips=state.fips,level=level,key=key,summaryfile=summaryfile)
 }
