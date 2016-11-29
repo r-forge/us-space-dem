@@ -12,6 +12,7 @@ CensusAPI2000.sub<-function(variables,state.fips,level=c("county","tract","block
 	fips2000<-bf()
 
 
+	suppressMessages(require(rjson))
 	level<-match.arg(level,several.ok=FALSE)
 	summaryfile<-match.arg(summaryfile,several.ok=FALSE)
 	#Make sure FIPS2000 is loaded.  This is setting up the FIPS.  Right now it is 17 MB.  Needs to be readily accessible.  How to get it on CRAN or on some server?
@@ -60,8 +61,12 @@ CensusAPI2000.sub<-function(variables,state.fips,level=c("county","tract","block
 	else if(level=="cdp")
 		url<-paste("http://api.census.gov/data/2000/",summaryfile,"?get=",gsub(", ",",",toString(variables)),"&for=place:*&in=state:",state.fips,"&key=",key,sep="")
 		
-	document <- rjson::fromJSON(file=url)
-	m<-matrix(unlist(document),ncol=length(document[[1]]),byrow=TRUE)
+		document <- try(rjson::fromJSON(file=url),silent=TRUE)
+	if(class(document)=="try-error")
+		{
+			stop("Data could not be found.  Make sure to check http://api.census.gov/data/2000/sf1/variables.html to see if you have the right variable name")
+		}
+	m<-matrix(unlist(document),nc=length(document[[1]]),byrow=TRUE)
 	m<-cbind(rep(NA,NROW(m)),m)
 	colnames(m)[2:NCOL(m)]<-c(m[1,2:NCOL(m)])
 	m<-rbind(m[2:NROW(m),])
@@ -123,7 +128,10 @@ CensusAPI2000.sub<-function(variables,state.fips,level=c("county","tract","block
 			for(j in 1:length(fips.subset))
 			{
 				m<-APIcall(fipscode=fips.subset[j])
-			d[substr(d$fips,3,5)==fips.subset[j],2:(length(variables)+1)]<-m[match(paste(m$state,m$county,m$tract,m[,"block group"],sep=""),rownames(d[substr(d$fips,3,5)==fips.subset[j],])),2:(1+length(variables))]
+				m2 = match(rownames(m), d$fips)
+				m2 = m2[!is.na(m2)]
+				d[m2,2:(length(variables)+1)] = m[,2:((length(variables))+1)]
+			#d[substr(d$fips,3,5)==fips.subset[j],2:(length(variables)+1)]<-m[match(paste(m$state,m$county,m$tract,m[,"block group"],sep=""),rownames(d[substr(d$fips,3,5)==fips.subset[j],])),2:(1+length(variables))]
 			}
 		}
 		
@@ -132,9 +140,16 @@ CensusAPI2000.sub<-function(variables,state.fips,level=c("county","tract","block
 		for(j in 1:length(fips.subset))
 		{
 			m<-APIcall(fipscode=fips.subset[j])
-			d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)]<-m[match(paste(m$state,sprintf("%02s",m$county),sprintf("%06s",m$tract),m$block,sep=""),rownames(d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)])),2:(1+length(variables))]
+			m2 = match(rownames(m), d$fips)
+			m2 = m2[!is.na(m2)]
+			d[m2,2:(length(variables)+1)] = m[,2:((length(variables))+1)]
+			#d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)]<-m[m2, 1:length(variables)]
+		
+			
+			#d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)]<-m[match(paste(m$state,sprintf("%02s",m$county),sprintf("%06s",m$tract),m$block,sep=""),rownames(d[substr(d$fips,3,11)==fips.subset[j],2:(length(variables)+1)])),2:(1+length(variables))]
 		}
 	}
+	
 	
 	if(level=="cdp")
 	{
@@ -155,9 +170,9 @@ wrapperCD2000<-function(variables,state.fips,level=c("county","tract","block gro
 	if(length(state.fips)>1)
 	{
 		out<-lapply(state.fips,function(x){
-	CensusAPI2000.sub(variables=variables,state.fips=x,level=level,key=key,summaryfile=summaryfile)
+	CensusData2000.sub(variables=variables,state.fips=x,level=level,key=key,summaryfile=summaryfile)
 		})
-		fout<-data.frame(matrix(NA,ncol=NCOL(out[[1]]),nrow=sum(sapply(out,NROW))))
+		fout<-data.frame(matrix(NA,nc=NCOL(out[[1]]),nr=sum(sapply(out,NROW))))
 		colnames(fout)<-colnames(out[[1]])
 		rownames(fout)<-unlist(sapply(out,rownames))
 		num<-sapply(out,NROW)
@@ -171,7 +186,7 @@ wrapperCD2000<-function(variables,state.fips,level=c("county","tract","block gro
 		return(fout)
 	}
 	
-CensusAPI2000.sub(variables=variables,state.fips=state.fips,level=level,key=key,summaryfile=summaryfile)
+CensusData2000.sub(variables=variables,state.fips=state.fips,level=level,key=key,summaryfile=summaryfile)
 }
 
 ### Final vector call

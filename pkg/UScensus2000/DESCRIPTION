@@ -1,8 +1,8 @@
 Package: UScensus2000
 Type: Package
 Title: US Census 2000 Suite of R Packages
-Version: 1.10
-Date: 2015-07-17
+Version: 1.11
+Date: 2016-11-29
 Author: Zack W. Almquist <almquist@umn.edu>
 Maintainer: Zack W. Almquist <almquist@umn.edu>
 Description: US Census 2000 shape files and additional demographic data
@@ -15,7 +15,7 @@ Depends: R (>= 3.2), maptools, sp, grDevices, base,
         stats, utils, rgeos, methods, UScensus2000tract, UScensus2000cdp
 Suggests: rgdal, rjson
 LazyLoad: yes
-URL: http://lakshmi.calit2.uci.edu/census2000/
+URL: https://r-forge.r-project.org/R/?group_id=2022
 Packaged: 2012-07-07 23:42:24 UTC; zack
 Repository: CRAN
 Date/Publication: 2012-07-08 06:13:05
