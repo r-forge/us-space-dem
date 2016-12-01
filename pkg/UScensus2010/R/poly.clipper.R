@@ -29,10 +29,11 @@ state <- check.state(state, statefips)
 #phat<-areaPoly(int)/areaPoly(sp[m,])
 #phat[phat>1]<-1
 #int@data<-int@data[,!sapply(int@data,is.character)]*as.vector(phat)
-int<-gIntersection(sp,city,byid=TRUE)
+#int<-gIntersection(sp,city,byid=TRUE,drop_lower_td=TRUE)
+
+int<-suppressWarnings(gIntersection(sp,city,byid = TRUE,drop_lower_td=TRUE))
 int<-spTransform(int,CRS(proj4string(sp)))
 sp<-spTransform(sp,CRS(proj4string(int)))
-int<-suppressWarnings(gIntersection(sp,city,byid = TRUE,drop_lower_td=TRUE))
 #int<-int@polyobj
 int<-as(int,"SpatialPolygonsDataFrame")
 #int<-spChFIDs(int,sapply(strsplit(rownames(int@data)," "),"[[",1))
