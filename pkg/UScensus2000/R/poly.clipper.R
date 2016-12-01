@@ -20,10 +20,11 @@ state <- check.state(state, statefips)
             utils::data(list = x, envir = parent.frame()) ###Check enviroment
             sp <- get(x)
         }
-int<-gIntersection(sp,city,byid=TRUE,drop_lower_td=TRUE)
+
+
+int<-suppressWarnings(gIntersection(sp,city,byid = TRUE,drop_lower_td=TRUE))
 sp<-spTransform(sp,CRS(proj4string(int)))
 int<-spTransform(int,CRS(proj4string(sp)))
-int<-suppressWarnings(gIntersection(sp,city,byid = TRUE,drop_lower_td=TRUE))
 #int<-int@polyobj
 int<-as(int,"SpatialPolygonsDataFrame")
 #int<-spChFIDs(int,sapply(strsplit(rownames(int@data)," "),"[[",1))
