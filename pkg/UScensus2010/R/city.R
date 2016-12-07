@@ -21,8 +21,11 @@ city<-function (name = NULL, state = NULL, statefips = FALSE, sp.object = NULL, 
         
         ####Need to fix this permantly 
         if(statefips){
+        temp.cdp$name<-iconv(temp.cdp$name,"WINDOWS-1252","UTF-8")
+        temp.cdp$name<-iconv(temp.cdp$place,"WINDOWS-1252","UTF-8")
         temp <- which(tolower(temp.cdp$place) %in%name == TRUE)
         }else{
+        	temp.cdp$name<-iconv(temp.cdp$name,"WINDOWS-1252","UTF-8")
         temp <- which(tolower(temp.cdp$name) %in% tolower(name) == TRUE)
         }
         
